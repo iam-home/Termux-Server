@@ -40,6 +40,7 @@ apt update && apt upgrade -y
 
 # 6. 자바 설치
 apt install -y openjdk-25-jre-headless
+
 버전 확인: java -version
 
 # 7. 마인크래프트 서버 폴더 생성 및 이동
@@ -47,22 +48,32 @@ mkdir mc-server && cd mc-server
 
 # 8. PaperMC 다운로드
 우분투에서 설치하려 했는데 자꾸 에러나고 시간만 잡아먹길래 폰으로 먼저 PaperMC 사이트가서 최신 버전으로 다운받고,
+
 cp /storage/emulated/0/Download/server/jar server.jar
+
 해서 우분투로 가져옴. 파일이름은 server로 내가 바꾼 거
 
+
 nano server.properties
+
 해서  Ctrl + W 누르고 online-mode를 입력해서 해당 줄로 이동,
+
 online-mode=true을 online-mode=false로 변경
+
 Ctrl + O -> Enter (저장)
+
 Ctrl + X (종료)
 
 # 9. 플러그인 폴더 생성
 cd
+
 mkdir plugins
 
 # 10. GeyserMC 및 Floodgate 설치
 일단 폴더로 이동
+
 cd plugins
+
 PaperMC 떄랑 똑같이 우분투에서 바로 설치하려니까 에러가 너무 많이 나고 시간도 너무 많이 낭비함. PaperMC랑 플러그인 설치 시도한 시간한 해도 5시간 될 거 같음. 여기서도 똑같이 폰으로 먼저 GeyserMC랑 floodgate 설치하고
 
 cp /storage/emulated/0/Download/Geyser-Spigot.jar Geyser-Spigot.jar
@@ -89,28 +100,42 @@ Ctrl + X (쫑료)
 
 # 11. Playit 설치
 여기는 어떻게 했는지 잘 모르겠어서 일단 그냥 썼던 명령어들 그대로 써보겠습니다. 막 에러 나다가 아래 명령어들을 써서 해결됐습니다.
+
 rm -rf /root/.config/playit_gg /usr/local/bin/playit
+
 curl -SsL -o /usr/local/bin/playit https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-linux-aarch64
+
 chmod +x /usr/local/bin/playit
+
 playit
+
 해서 나온 링크를 복사해서 폰 브라우저로 붙여넣고 접속,
+
 계정 만들고,
+
 터널 생성,
+
 Minecraft Java 선택 후 추가,
+
 여기서 나온 주소가 자바 서버의 주소.
+
 같은 방법으로 Minecraft Bedrock 선택 후 추가,
+
 여기서 나온 주소가 베드락 서버의 주소, 주소 옆에 포트.
 
 # 12. 서버 최초 실행
 server.jar 있는 폴더가서
+
 java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui
 
 # 13. EULA 동의 수락
 echo "eula=true" > eula.txt
+
 cat eula.txt 했을 때 eula=true 한 줄 나오면 된 거심.
 
 # 14. 서버 실행
 java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui
+
 서버 끄는 건 stop
 
 # 15. 단축키 만들기
@@ -128,6 +153,7 @@ tmux new-session -d -s play 'playit'
 >
 
 Ctrl + O -> Enter
+
 Ctrl + X
 
 -------------------------
@@ -146,30 +172,44 @@ tmux kill-session -t play
 >
 
 Ctrl + O -> Enter
+
 Ctrl + X
 
 # 16. 스크립트 실행 권한 부여
 chmod +x start.sh
+
 chmod +x stop.sh
 
+
 시작하려면 ./start.sh
+
 끄려면 ./stop.sh
 
 # 17. 자동화 및 더 간략하게
 exit 해서 우분투에서 나가기
+
 nano ~/.bashrc
+
 proot-distro login ubuntu --shared-tmp -- bash -c "cd /root && ./start.sh; bash"
 
+
 Ctrl + O -> Enter
+
 Ctrl + X
 
 다시 우분투로 가야됨
+
 proot-distro login ubuntu
+
 nano ~/.bashrc
+
 alias s='/root/stop.sh'
 
+
 Ctrl + O -> Enter
+
 Ctrl + X
+
 
 nano ~/.bash_profile
 
@@ -180,6 +220,7 @@ fi
 >
 
 Ctrl + O -> Enter
+
 Ctrl + X
 
 * alias s='./stop.sh' 여기서 s가 아니라 다른 걸 쓰면 그 다른 걸 입력했을 때 서버가 꺼집니다. ex) alias mcstop='./stop.sh'이면 mcstop을 썼을 때 서버가 꺼짐
