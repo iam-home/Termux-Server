@@ -60,9 +60,11 @@ nano server.properties
 
 online-mode=true을 online-mode=false로 변경
 
+
 Ctrl + O -> Enter (저장)
 
 Ctrl + X (종료)
+
 
 # 9. 플러그인 폴더 생성
 cd
@@ -90,11 +92,13 @@ rm -f Geyser-Spigot.jar 해서 원래 geyser 지우고 다시,
 
 cp /storage/emulated/0/Download/Geyser-Standalone.jar Geyser-Standalone.jar
 
+
 nano config.yml
 
 해서 auth-type: online 부분을
 
 auth-type: offline으로 변경.
+
 
 Ctrl + O -> Enter (저장)
 
@@ -145,15 +149,19 @@ java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui
   
   nano start.sh 해서 스크립트 작성
 
-<
-#!/bin/bash
 
-tmux new-session -d -s mc 'cd /root/mc-server && java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui'
+/* 아래 스크립트 내용
 
-tmux new-session -d -s geyser 'cd /root/plugins && java -jar Geyser-Standalone.jar'
+    #!/bin/bash
+    
+    tmux new-session -d -s mc 'cd /root/mc-server && java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui'
+    
+    tmux new-session -d -s geyser 'cd /root/plugins && java -jar Geyser-Standalone.jar'
+    
+    tmux new-session -d -s play 'playit'
 
-tmux new-session -d -s play 'playit'
->
+*/
+
 
 Ctrl + O -> Enter
 
@@ -165,15 +173,18 @@ Ctrl + X
   
   nano stop.sh 해서 스크립트 작성
 
-<
-#!/bin/bash
+*/ 아래 스크립트 내용
 
-tmux send-keys -t mc "stop" C-m
+    #!/bin/bash
+    
+    tmux send-keys -t mc "stop" C-m
+    
+    tmux send-keys -t geyser "geyser stop" C-m
+    
+    tmux kill-session -t play
 
-tmux send-keys -t geyser "geyser stop" C-m
+*/
 
-tmux kill-session -t play
->
 
 Ctrl + O -> Enter
 
@@ -201,9 +212,11 @@ Ctrl + O -> Enter
 
 Ctrl + X
 
+
 다시 우분투로 가야됨
 
 proot-distro login ubuntu
+
 
 nano ~/.bashrc
 
@@ -217,19 +230,22 @@ Ctrl + X
 
 nano ~/.bash_profile
 
-아래 이거 쓰기 <
 
-if [ -f ~/.bashrc ]; then
+/* 아래 이거 쓰기
 
-    . ~/.bashrc
+    if [ -f ~/.bashrc ]; then
+
+        . ~/.bashrc
     
-fi
+    fi
 
->
++/
+
 
 Ctrl + O -> Enter
 
 Ctrl + X
+
 
 * alias s='./stop.sh' 여기서 s가 아니라 다른 걸 쓰면 그 다른 걸 입력했을 때 서버가 꺼집니다. ex) alias mcstop='./stop.sh'이면 mcstop을 썼을 때 서버가 꺼짐
 
