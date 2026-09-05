@@ -6,14 +6,19 @@ aternos를 쓰면 가장 쉬운 방법으로 할 수는 있는데 수동으로 �
 오라클 클라우드를 쓰면 24시간 서버를 만들 수 있는 거로 알고 있는데 해외 결제가 가능한 카드가 없어서 시도도 못 해봄.
 
 termux를 써서 24시간 서버를 만들까?
+
 문제 1) 와이파이 연결
+
 문제 2) 서브 기기에 할 시 항상 충전기 꽂아둬야됨
+
 문제 3) 메인 기기에 할 시 실사용에 지장이 갈 수 있음?
+
 -> termux를 써서 aternos보다만 더 편할 수 있게 만들자!
 
 시작
 
 termux에 우분투를 설치하고, 우분투에 Paper를 설치할 겁니다. GeyserMC 플러그인을 설치해서 베드락 친구들도 들어올 수 있도록 할 예정입니다.
+
 포트포워딩은 하기 싫기도 하고 뭐랄까 좀 문제가 있을 거 같아서 안 할 겁니다. Tailscale은 약간 번거로워서 안 할 겁니다.
 -> Playit을 쓰자!
 
@@ -59,17 +64,27 @@ mkdir plugins
 일단 폴더로 이동
 cd plugins
 PaperMC 떄랑 똑같이 우분투에서 바로 설치하려니까 에러가 너무 많이 나고 시간도 너무 많이 낭비함. PaperMC랑 플러그인 설치 시도한 시간한 해도 5시간 될 거 같음. 여기서도 똑같이 폰으로 먼저 GeyserMC랑 floodgate 설치하고
+
 cp /storage/emulated/0/Download/Geyser-Spigot.jar Geyser-Spigot.jar
+
 cp /storage/emulated/0/Download/floodgate-spigot.jar floodgate-spigot.jar
+
 이제 문제가 없는 줄 알았더니 geyser가 말을 안 들음. 이유는 모르겠는데 실행이 안되는 듯 보임.
+
 Geyser-Standalone.jar로 다운 받아서 그냥 분리해줬음
+
 rm -f Geyser-Spigot.jar 해서 원래 geyser 지우고 다시,
+
 cp /storage/emulated/0/Download/Geyser-Standalone.jar Geyser-Standalone.jar
 
 nano config.yml
+
 해서 auth-type: online 부분을
+
 auth-type: offline으로 변경.
+
 Ctrl + O -> Enter (저장)
+
 Ctrl + X (쫑료)
 
 # 11. Playit 설치
@@ -172,15 +187,16 @@ Ctrl + X
 
 ---------------------------------------------------------------------------------------
 
-기억 더듬어가면서 쓴 거라 혹시 안되는 게 있을 수 있습니다. 안되는 건 알아서 찾아서 해보시길~
-근데 아마 되지 않을까 기대해봅니다
+기억 더듬어가면서 쓴 거라 혹시 안되는 게 있을 수 있습니다. 안되는 건 알아서 찾아서 해보시길~ 근데 아마 되지 않을까 기대해봅니다
 
 아 근데 하나 불편한 게 서버 켜는 속도가 좀 느립니다. Playit이랑 GeyserMC는 켜졌는데 서버가 아직 켜지기 전이더라고요.
 그래도 aternos보다는 빠르고 편하긴 한데 어쩌다 한 번 정도는 불편함을 느낄 가능성이 있다? 정도는 되는 거 같습니다.
 
 
 -사용기기-
+
 샤오미 홍미노트 11 프로 5G
+
 AP: SD695
 
 제가 전문가가 아니라 다른 기기에서는 어떻게 되는지 모르겠네요,,
