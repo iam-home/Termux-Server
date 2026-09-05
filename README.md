@@ -150,7 +150,7 @@ java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui
   nano start.sh 해서 스크립트 작성
 
 
-/* 아래 스크립트 내용
+// 아래 스크립트 내용
 
     #!/bin/bash
     
@@ -160,7 +160,7 @@ java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui
     
     tmux new-session -d -s play 'playit'
 
-*/
+
 
 
 Ctrl + O -> Enter
@@ -173,7 +173,7 @@ Ctrl + X
   
   nano stop.sh 해서 스크립트 작성
 
-*/ 아래 스크립트 내용
+// 아래 스크립트 내용
 
     #!/bin/bash
     
@@ -183,7 +183,7 @@ Ctrl + X
     
     tmux kill-session -t play
 
-*/
+
 
 
 Ctrl + O -> Enter
@@ -231,15 +231,15 @@ Ctrl + X
 nano ~/.bash_profile
 
 
-/* 아래 이거 쓰기
+// 아래 이거 쓰기
 
     if [ -f ~/.bashrc ]; then
-
-        . ~/.bashrc
     
+        . ~/.bashrc
+        
     fi
 
-+/
+
 
 
 Ctrl + O -> Enter
