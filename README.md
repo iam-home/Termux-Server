@@ -74,7 +74,9 @@ mkdir plugins
 
 cd plugins
 
-PaperMC 떄랑 똑같이 우분투에서 바로 설치하려니까 에러가 너무 많이 나고 시간도 너무 많이 낭비함. PaperMC랑 플러그인 설치 시도한 시간한 해도 5시간 될 거 같음. 여기서도 똑같이 폰으로 먼저 GeyserMC랑 floodgate 설치하고
+PaperMC 떄랑 똑같이 우분투에서 바로 설치하려니까 에러가 너무 많이 나고 시간도 너무 많이 낭비함. PaperMC랑 플러그인 설치 시도한 시간한 해도 5시간 될 거 같음.
+
+여기서도 똑같이 폰으로 먼저 GeyserMC랑 floodgate 설치하고 복사해주겠습니다.
 
 cp /storage/emulated/0/Download/Geyser-Spigot.jar Geyser-Spigot.jar
 
@@ -140,6 +142,7 @@ java -Djava.awt.headless=true -Xms1G -Xmx1G -jar server.jar nogui
 
 # 15. 단축키 만들기
 - 서버 시작
+  
   nano start.sh 해서 스크립트 작성
 
 <
@@ -159,6 +162,7 @@ Ctrl + X
 -------------------------
 
 - 서버 끄기
+  
   nano stop.sh 해서 스크립트 작성
 
 <
@@ -214,9 +218,13 @@ Ctrl + X
 nano ~/.bash_profile
 
 아래 이거 쓰기 <
+
 if [ -f ~/.bashrc ]; then
+
     . ~/.bashrc
+    
 fi
+
 >
 
 Ctrl + O -> Enter
